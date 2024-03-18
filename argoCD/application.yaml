@@ -12,7 +12,6 @@ spec:
     path: argoCD/clusters/test
   destination: 
     server: https://kubernetes.default.svc 
-    namespace: test-app
 
   syncPolicy: 
     syncOptions: 
