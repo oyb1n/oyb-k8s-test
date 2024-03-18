@@ -1,30 +1,9 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
+apiVersion: approuting.kubernetes.azure.com/v1alpha1
+kind: NginxIngressController
 metadata:
-  name: ingress-nginx
+  name: nginx-internal
 spec:
-  interval: 30m
-  url: https://kubernetes.github.io/ingress-nginx
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: ingress-nginx
-spec:
-  releaseName: nginx-controller
-  chart:
-    spec:
-      chart: ingress-nginx
-      sourceRef:
-        kind: HelmRepository
-        name: ingress-nginx
-  interval: 1h0m0s
-  install:
-    remediation:
-      retries: 3
-  values:
-    controller:
-      kind: DaemonSet
-      service:
-        annotations:
-          service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  ingressClassName: nginx-internal
+  controllerNamePrefix: nginx-internal
+  loadBalancerAnnotations: 
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
