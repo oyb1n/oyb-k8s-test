@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: argocd
+  namespace: argocd 
+spec:
+  project: default 
+
+  source: 
+    repoURL: https://github.com/oyb1n/oyb-k8s-test
+    targetRevision: HEAD
+    path: argoCD/clusters/test
+  destination: 
+    server: https://kubernetes.default.svc 
+    namespace: test-app
+
+  syncPolicy: 
+    syncOptions: 
+    - CreateNameSpace=true
+
+    automated: 
+     prune: true
+     selfHeal: true
