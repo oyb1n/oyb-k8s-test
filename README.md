@@ -154,9 +154,9 @@ The username is admin, to find password we can utilize k9s.
 Run k9s
 ```
 k9s
-````
+```
 Find the secrets for argo by going 
-````
+```
 :namespaces 
 :secrets 
 ```
@@ -167,6 +167,13 @@ x - decode
 
 Copy the password for the admin user and paste it into the UI you opened previously. 
 x
+
+Now we can utilize the applciation.yaml under the /argoCD/ folder in the repos. 
+Run 
+
+```
+kubectl apply -f /argoCD/application.yaml
+```
 
 
 

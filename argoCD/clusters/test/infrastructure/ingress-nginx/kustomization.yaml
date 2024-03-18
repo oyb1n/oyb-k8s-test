@@ -5,7 +5,7 @@ helmCharts:
 - name: ingress-nginx
   repo: https://charts.bitnami.com/bitnami
   version: "1.10.0"
-  releaseName: bitnami/nginx-ingress-controller
+  releaseName: nginx-ingress-controller
   namespace: ingress-nginx
   valuesFile: values.yaml
   valuesInline:
