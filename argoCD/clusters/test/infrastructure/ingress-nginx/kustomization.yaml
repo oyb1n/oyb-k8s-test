@@ -10,3 +10,6 @@ helmCharts:
   valuesFile: values.yaml
   valuesInline:
     fullnameOverride: nginx
+
+resources:
+  - namespace.yaml
