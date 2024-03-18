@@ -4,7 +4,7 @@ kind: Kustomization
 helmCharts:
 - name: ingress-nginx
   repo: https://charts.bitnami.com/bitnami
-  version: "15.14.0"
+  version: "1.25.4"
   releaseName: bitnami/nginx
   namespace: ingress-nginx
   valuesFile: values.yaml
