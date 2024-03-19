@@ -104,6 +104,17 @@ az aks create \
     --vnet-subnet-id '<SubscriptionID>'
 
 ```
+Adding a node pool to our cluster: 
+
+```
+az aks nodepool add \
+    --name userpool \
+    --cluster-name test-aks \
+    --resource-group test-aks-rg \
+    --mode User \
+    --node-count 2
+
+```
 
 Now that the AKS is created, get your credentials by running 
 
@@ -168,13 +179,17 @@ x - decode
 Copy the password for the admin user and paste it into the UI you opened previously. 
 x
 
-Now we can utilize the applciation.yaml under the /argoCD/ folder in the repos. 
+Before we can utilize the applciation.yaml under the /argoCD/ folder in the repos. We need to enable 
+helm charts in argoCD (ease of use for demo)
 Run 
 
 ```
-kubectl apply -f /argoCD/application.yaml
+kubectl apply -f /argoCD/configmap.yaml
 ```
 
+Then we can install our applications. 
+So we'll start with creating our ingress controller. 
+We have 
 
 
 ### Application Gateway

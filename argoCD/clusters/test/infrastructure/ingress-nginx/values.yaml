@@ -1,0 +1,19 @@
+# Helm values preset for Ingress Nginx
+
+controller:
+    service:
+      loadBalancerIP: 10.12.2.250
+      externalTrafficPolicy: Local
+      annotations:
+        service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    config:
+      proxy-body-size: "0"
+      proxy-read-timeout: 120
+      proxy-send-timeout: 120
+    nodeSelector:
+        kubernetes.azure.com/mode: user
+    tolerations:
+    - key: "mode"
+      operator: "Equal"
+      value: "system"
+      effect: "NoSchedule"
